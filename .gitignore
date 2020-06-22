@@ -1,0 +1,9 @@
+/dist/
+/tmp/
+/.vscode/
+/node_modules/
+.envrc
+/.venv/
+/coverage/
+out/
+/cdk.out/

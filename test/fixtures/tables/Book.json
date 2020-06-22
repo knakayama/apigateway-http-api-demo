@@ -1,0 +1,24 @@
+{
+  "TableName": "Book",
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "main_pk",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "main_sk",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "AttributeName": "main_pk",
+      "KeyType": "HASH"
+    },
+    {
+      "AttributeName": "main_sk",
+      "KeyType": "RANGE"
+    }
+  ],
+  "BillingMode": "PAY_PER_REQUEST"
+}

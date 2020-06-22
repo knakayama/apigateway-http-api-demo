@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@use-cases/*": [
+        "src/use-cases/*"
+      ],
+      "@controllers/*": [
+        "src/controllers/*"
+      ],
+      "@presenters/*": [
+        "src/presenters/*"
+      ],
+      "@externals/*": [
+        "src/externals/*"
+      ],
+      "@test/utils/*": [
+        "test/utils/*"
+      ],
+      "@infrastructures/*": [
+        "src/infrastructures/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ]
+    },
+    "module": "commonjs",
+    "target": "es6",
+    "lib": [
+      "es6",
+      "es2019"
+    ],
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "sourceMap": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "node_modules/@types",
+    "node_modules/jest-extended/types/**/*.d.ts"
+  ]
+}
