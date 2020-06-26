@@ -114,9 +114,6 @@ export class ResponseBuilder {
       result instanceof ErrorResult ? { error: result } : result
     const response: ApiResponse = {
       body: JSON.stringify(bodyObject),
-      headers: {
-        'Access-Control-Allow-Origin': process.env.ALLOWED_ORIGIN!,
-      },
       statusCode,
     }
     callback(undefined, response)

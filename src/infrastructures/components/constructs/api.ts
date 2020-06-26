@@ -5,6 +5,7 @@ import * as lambda from '@aws-cdk/aws-lambda'
 import * as dynamodb from '@aws-cdk/aws-dynamodb'
 import * as acm from '@aws-cdk/aws-certificatemanager'
 import * as apigatewayv2 from '@aws-cdk/aws-apigatewayv2'
+import * as apigateway from '@aws-cdk/aws-apigateway'
 
 interface DemoApi {
   stageName: string
@@ -91,7 +92,7 @@ export class ApiConstruct extends Construct {
     const api = new apigatewayv2.HttpApi(this, 'HttpApi', {
       corsPreflight: {
         allowCredentials: props.allowedOrigin === '*' ? false : true,
-        allowHeaders: ['Authorization'],
+        allowHeaders: apigateway.Cors.DEFAULT_HEADERS,
         allowMethods: [
           apigatewayv2.HttpMethod.GET,
           apigatewayv2.HttpMethod.HEAD,
