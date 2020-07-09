@@ -146,29 +146,26 @@ export class ApiConstruct extends Construct {
       }),
     })
 
-    const httpApiStage = api.addStage('HttpApiStage', {
-      autoDeploy: true,
-      stageName: props.stageName,
-    })
-
-    const httpApiDomainName = new apigatewayv2.CfnDomainName(
+    const apiDomainName = new apigatewayv2.DomainName(
       this,
       'HttpApiDomainName',
       {
         domainName: props.domain,
-        domainNameConfigurations: [
-          {
-            certificateArn: props.cert.certificateArn,
-            endpointType: 'REGIONAL',
-          },
-        ],
+        certificate: acm.Certificate.fromCertificateArn(
+          this,
+          'HttpApiCert',
+          props.cert.certificateArn
+        ),
       }
     )
-    new apigatewayv2.CfnApiMapping(this, 'HttpApiMapping', {
-      apiId: api.httpApiId,
-      domainName: httpApiDomainName.domainName,
-      stage: httpApiStage.stageName,
-      apiMappingKey: httpApiStage.stageName,
+
+    api.addStage('HttpApiStage', {
+      autoDeploy: true,
+      stageName: props.stageName,
+      domainMapping: {
+        domainName: apiDomainName,
+        mappingKey: props.stageName,
+      },
     })
 
     // TODO: not compatible yet
